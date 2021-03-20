@@ -1,7 +1,6 @@
 {{template "base" . }}
 
 {{define "content"}}
-    <h1>This is a home page</h1>
-    <p>Pargarpah</p>
+    <h1>This is a {{ index .StringMap "title" }}</h1>
 {{end}}
 

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/tklara86/lp_collection_go/pkg/config"
+	"github.com/tklara86/lp_collection_go/pkg/models"
 	"html/template"
 	"log"
 	"net/http"
@@ -18,8 +19,12 @@ func NewTemplates (a *config.AppConfig) {
 	app = a
 }
 
+func AddDefaultData(td * models.TemplateData) *models.TemplateData {
+	return td
+}
+
 // RenderTemplate renders templates using html/template
-func RenderTemplate(w http.ResponseWriter, tmpl string) {
+func RenderTemplate(w http.ResponseWriter, tmpl string, tmplData *models.TemplateData) {
 	var tc map[string]*template.Template
 	// Get the template cache from teh app config
 	if app.UseCache {
@@ -37,7 +42,9 @@ func RenderTemplate(w http.ResponseWriter, tmpl string) {
 
 	buff := new(bytes.Buffer)
 
-	_ = t.Execute(buff, nil)
+	tmplData = AddDefaultData(tmplData)
+
+	_ = t.Execute(buff, tmplData)
 
 	_, err := buff.WriteTo(w)
 	if err != nil {
