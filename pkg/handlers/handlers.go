@@ -30,6 +30,7 @@ func NewHandlers(r *Repository) {
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request)  {
 	stringMap := make(map[string]string)
 	stringMap["title"] = "Home Page"
+
 	render.RenderTemplate(w,"home.page.tmpl", &models.TemplateData{
 		StringMap: stringMap,
 	})
@@ -38,5 +39,9 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request)  {
 
 // Albums page handler
 func (m *Repository) Albums(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "albums.page.tmpl", &models.TemplateData{})
+	stringMap := make(map[string]string)
+	stringMap["title"] = "Albums Page"
+	render.RenderTemplate(w, "albums.page.tmpl", &models.TemplateData{
+		StringMap: stringMap,
+	})
 }
