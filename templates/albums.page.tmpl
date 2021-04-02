@@ -11,13 +11,13 @@
         </div>
 
         <div class="form-control">
-            <label class="form-label" for="inputArtist">Artist</label>
-            <input class="input-control" type="text" name="artist" id="inputArtist" placeholder="Artist" value="{{$res.Artist}}">
+            <label class="form-label" for="inputArtist">Artist</label>{{ with .Form.Errors.Get "artist" }}<span class="alertText--danger ml-7">{{.}}</span>{{end}}
+            <input class="input-control {{ with .Form.Errors.Get "artist" }} is-error  {{end}}" type="text" name="artist" id="inputArtist" placeholder="Artist" value="{{$res.Artist}}">
         </div>
 
         <div class="form-control">
-            <label class="form-label" for="inputYear">Year</label>
-            <input class="input-control" type="text" name="year" id="inputYear" placeholder="Year" value="{{$res.Year}}">
+            <label class="form-label" for="inputYear">Year</label>{{ with .Form.Errors.Get "year" }}<span class="alertText--danger ml-7">{{.}}</span>{{end}}
+            <input class="input-control {{ with .Form.Errors.Get "year" }} is-error  {{end}}" type="text" name="year" id="inputYear" placeholder="Year" value="{{$res.Year}}">
 
         </div>
 
@@ -26,7 +26,7 @@
 {{/*            <label class="form-label" for="textarea"></label>*/}}
 {{/*            <textarea class="input-control" name="description" id="textarea" placeholder="Description" rows="10"></textarea>*/}}
 {{/*        </div>*/}}
-        <button type="submit" class="btn btn-medium btn-primary">Submit</button>
+        <button type="submit" class="btn btn-large btn-primary full-width">Submit</button>
     </form>
 {{end}}
 

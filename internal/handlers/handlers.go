@@ -138,7 +138,9 @@ func (m *Repository) PostAlbum(w http.ResponseWriter, r *http.Request) {
 
 	form := forms.New(r.PostForm)
 
-	form.Has("title", r)
+	form.Required("title", "artist", "year")
+	form.MinLength("title", 3, r)
+	// form.IsEmail("email", r)
 
 	if !form.Valid() {
 		data := make(map[string]interface{})
