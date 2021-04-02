@@ -1,3 +1,10 @@
 .idea/
 node_modules
 static/styles/.sass-cache
+.DS_Store
+static/.DS_Store
+
+styles/.sass-cache/*
+styles/.sass-cache
+.sass-cache/
+*.css.map
