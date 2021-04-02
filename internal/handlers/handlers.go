@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"github.com/tklara86/lp_collection_go/internal/config"
+	"github.com/tklara86/lp_collection_go/internal/forms"
 	"github.com/tklara86/lp_collection_go/internal/models"
 	"github.com/tklara86/lp_collection_go/internal/render"
 	"log"
@@ -39,13 +40,19 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request)  {
 
 }
 
-
 // Albums page handler
 func (m *Repository) Albums(w http.ResponseWriter, r *http.Request) {
 	stringMap := make(map[string]string)
 	stringMap["title"] = "Albums Page"
+
+	var epmtyAlbum models.Album
+	data := make(map[string]interface{})
+	data["album"] = epmtyAlbum
+
 	render.RenderTemplate(w,r, "albums.page.tmpl", &models.TemplateData{
 		StringMap: stringMap,
+		Form: forms.New(nil),
+		Data: data,
 	})
 }
 
@@ -113,4 +120,35 @@ func (m *Repository) SearchAlbums(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+// PostAlbum handles the posting of a album form
+func (m *Repository) PostAlbum(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	album := &models.Album{
+		Title: r.Form.Get("title"),
+		Artist: r.Form.Get("artist"),
+		Year: r.Form.Get("year"),
+	}
+
+	form := forms.New(r.PostForm)
+
+	form.Has("title", r)
+
+	if !form.Valid() {
+		data := make(map[string]interface{})
+		data["album"] = album
+
+		render.RenderTemplate(w,r, "albums.page.tmpl", &models.TemplateData{
+			Form: form,
+			Data: data,
+		})
+		return
+	}
+
 }

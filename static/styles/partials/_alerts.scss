@@ -54,3 +54,11 @@
     padding: 10px;
   }
 }
+
+.alertText {
+  color: theme-colors("bg-color", "primary-dark");
+
+  &--danger {
+    color: theme-colors("bg-color", "danger");
+  }
+}

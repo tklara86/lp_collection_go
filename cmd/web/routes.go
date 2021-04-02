@@ -20,6 +20,7 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/albums", handlers.Repo.Albums)
 	//mux.Post("/albums", handlers.Repo.PostAlbum)
 	mux.Post("/search-albums", handlers.Repo.SearchAlbums)
+	mux.Post("/albums", handlers.Repo.PostAlbum)
 
 	fileServer := http.FileServer(http.Dir("./static"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))

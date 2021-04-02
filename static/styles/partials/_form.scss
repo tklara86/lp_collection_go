@@ -70,24 +70,12 @@ form {
     display: flex;
     flex-direction: column;
   }
+  .is-error {
+    background-color: white;
+    border-color: theme-colors("bg-color", "danger");
+    box-shadow: 0 0 2px #fa5c5c
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .form-heading {
   max-width: $form-witdh;

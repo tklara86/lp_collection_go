@@ -2,22 +2,30 @@
 
 {{define "content"}}
     <h1 class="text--lg">This is {{ index .StringMap "title" }}</h1>
+     {{$res := index .Data "album"}}
     <form method="post" action="/albums" id="search-albums">
         <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
         <div class="form-control">
-            <label class="form-label" for="inputName">Name</label>
-            <input class="input-control" type="text" name="name" id="inputName" placeholder="Name">
+            <label class="form-label" for="inputTitle">Title</label>{{ with .Form.Errors.Get "title" }}<span class="alertText--danger ml-7">{{.}}</span>{{end}}
+            <input class="input-control {{ with .Form.Errors.Get "title" }} is-error  {{end}}" type="text" name="title" id="inputTitle" placeholder="Title" value="{{$res.Title}}">
         </div>
 
         <div class="form-control">
-            <label class="form-label" for="inputEmail">Email</label>
-            <input class="input-control" type="text" name="email" id="inputEmail" placeholder="Email">
+            <label class="form-label" for="inputArtist">Artist</label>
+            <input class="input-control" type="text" name="artist" id="inputArtist" placeholder="Artist" value="{{$res.Artist}}">
         </div>
 
         <div class="form-control">
-            <label class="form-label" for="textarea">Description</label>
-            <textarea class="input-control" name="description" id="textarea" placeholder="Description" rows="10"></textarea>
+            <label class="form-label" for="inputYear">Year</label>
+            <input class="input-control" type="text" name="year" id="inputYear" placeholder="Year" value="{{$res.Year}}">
+
         </div>
+
+
+{{/*        <div class="form-control">*/}}
+{{/*            <label class="form-label" for="textarea"></label>*/}}
+{{/*            <textarea class="input-control" name="description" id="textarea" placeholder="Description" rows="10"></textarea>*/}}
+{{/*        </div>*/}}
         <button type="submit" class="btn btn-medium btn-primary">Submit</button>
     </form>
 {{end}}

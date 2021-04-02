@@ -1,5 +1,7 @@
 package models
 
+import "github.com/tklara86/lp_collection_go/internal/forms"
+
 // TemplateData holds data set from handlers to templates
 type TemplateData struct {
 	StringMap map[string]string
@@ -10,4 +12,6 @@ type TemplateData struct {
 	FlashMessage string
 	Warning string
 	Error string
+	Form *forms.Form
 }
+

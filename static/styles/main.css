@@ -1167,6 +1167,11 @@ body {
     color: #265cd4;
     padding: 10px; }
 
+.alertText {
+  color: #1c1b1b; }
+  .alertText--danger {
+    color: #f0506e; }
+
 form {
   margin: 30px auto;
   max-width: 80rem; }
@@ -1230,6 +1235,10 @@ form {
   .form-control--flex {
     display: flex;
     flex-direction: column; }
+  .form-control .is-error {
+    background-color: white;
+    border-color: #f0506e;
+    box-shadow: 0 0 2px #fa5c5c; }
 
 .form-heading {
   max-width: 80rem;
