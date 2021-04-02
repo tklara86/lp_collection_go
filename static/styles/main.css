@@ -1149,7 +1149,7 @@ body {
     padding: 10px; }
   .alert-primary {
     background-color: var(--primary-blue);
-    padding: 10px; }
+    padding: 12px; }
   .alert-danger--light {
     background-color: #ffe5ea;
     color: #ff4747;
