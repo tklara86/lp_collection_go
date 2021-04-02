@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 	"github.com/alexedwards/scs/v2"
-	"github.com/tklara86/lp_collection_go/pkg/config"
-	"github.com/tklara86/lp_collection_go/pkg/handlers"
-	"github.com/tklara86/lp_collection_go/pkg/render"
+	"github.com/tklara86/lp_collection_go/internal/config"
+	"github.com/tklara86/lp_collection_go/internal/handlers"
+	"github.com/tklara86/lp_collection_go/internal/render"
 	"log"
 	"net/http"
 	"os"
@@ -50,7 +50,6 @@ func main() {
 
 
 	fmt.Println(fmt.Sprintf("Starting application on port %s", portNumber))
-	//_ = http.ListenAndServe(portNumber, nil)
 
 	srv := &http.Server{
 		Addr: portNumber,

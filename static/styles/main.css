@@ -1278,7 +1278,7 @@ label {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
-      margin-bottom: 2px; }
+      margin-bottom: 0; }
       .navbar--links ul li {
         margin-right: 1.5rem; }
         .navbar--links ul li a {
